@@ -1,4 +1,4 @@
-name: Bac
+name: via
 
 on:
   schedule:
@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Download
         shell: bash
         run: |
