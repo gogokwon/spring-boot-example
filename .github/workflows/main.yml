@@ -1,4 +1,4 @@
-name: via
+name: bac
 
 on:
   schedule:
@@ -10,23 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Download
         shell: bash
         run: |
-          curl -L -o via.zip "${{ secrets.VIA }}"
-          if [ ! -f "via.zip" ]; then
-            echo "Download failed: via.zip not found."
+          curl -L -o bac.zip "${{ secrets.BAC }}"
+          if [ ! -f "bac.zip" ]; then
+            echo "Download failed: bac.zip not found."
             exit 1
           fi
 
       - name: Unzip
         shell: bash
         run: |
-          unzip via.zip
-          rm via.zip
+          unzip bac.zip
+          rm bac.zip
 
       - name: Run
         shell: bash
         run: |
-          chmod +x ./via.sh
-          ./via.sh
+          chmod +x ./bac.sh
+          ./bac.sh
